@@ -1,0 +1,24 @@
+bazel_dep(name = "rules_python", version = "1.7.0")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+
+python.single_version_override(
+  python_version = "3.9.25",
+  sha256 = {
+    "aarch64-apple-darwin": "87275619c2706affa4d1090d2ca3dad354b6d69f8b85dbfafe38785870751b9a",
+    "aarch64-unknown-linux-gnu": "6112d46355857680b81849764a6cf9f38cc4cd0d1cf29d432bc12fe5aeedf9d0",
+    "ppc64le-unknown-linux-gnu": "828364b6f54fa45ac2dc91f8e45d5b74306372af374a9ef16eeb2ea81253ed3f",
+    "riscv64-unknown-linux-gnu": "17467e0158e5ad04453c447d6773c23b044172276441e22e23058fd3ea053e27",
+    "s390x-unknown-linux-gnu": "3e9539f83e67faa813fd06171199b2d33c89821dfa9a33bf6e27ad67f1b6932d",
+    "x86_64-apple-darwin": "ace63cfe27a9487c4d72e1cb518be01c1d985271da0b2158e813801f7d3e5503",
+    "x86_64-pc-windows-msvc": "4fb1b416482ce94d73cfa140317a670c596c830671d137b07c26afe8c461768a",
+    "x86_64-unknown-linux-gnu": "42834f61eb6df43432c3dd6ab9ca3fdf8c06d10a404ebdb53d6902e6b9570b08",
+    "x86_64-unknown-linux-musl": "76593e8c889e81e82db5fe117fe15b69466f85100ab2ec0e4035aa86242b4e93",
+  },
+  urls = ["https://github.com/astral-sh/python-build-standalone/releases/download/20251031/cpython-{python_version}+20251031-{platform}-{build}.tar.gz"],
+)
+
+python.toolchain(
+  configure_coverage_tool = True,
+  python_version = "3.9.25",
+)
